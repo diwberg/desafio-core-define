@@ -267,8 +267,6 @@ const TestimonialCarousel = ({ testimonials }: {
 
 export default function Home() {
   // States
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [activeTab, setActiveTab] = useState("treinos");
   const [showScrollTop, setShowScrollTop] = useState(false);
   
@@ -276,13 +274,6 @@ export default function Home() {
   useScrollAnimation();
   
   // Handlers
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Email cadastrado:", email);
-    setSubmitted(true);
-    setEmail("");
-  };
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -684,38 +675,33 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               VOCÊ MERECE VOLTAR A SE OLHAR COM ORGULHO
             </h2>
-            <p className="text-lg mb-12 text-gray-300">
-              Deixe seu nome. O resto a gente constrói juntas.
+            <p className="text-lg mb-8 text-gray-300">
+              Entre no nosso grupo e inicie sua transformação com a gente.
             </p>
             
-            {!submitted ? (
-              <form
-                onSubmit={handleSubmit}
-                className="glass-effect p-6 md:p-8 rounded-lg scroll-animated fade-up"
-              >
-                <div className="mb-6">
-                  <input
-                    type="email"
-                    placeholder="Seu melhor email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="form-control"
+            <div className="glass-effect p-6 md:p-8 rounded-lg scroll-animated fade-up">
+              <div className="flex flex-col items-center">
+                <div className="qr-code-container mb-6 bg-white p-4 rounded-lg">
+                  <img 
+                    src="/images/grupo-qrcode.png" 
+                    alt="QR Code para entrar no grupo" 
+                    className="w-48 h-48 mx-auto"
                   />
                 </div>
-                <button type="submit" className="cta-button w-full flex items-center justify-center">
-                  <span>ENTRAR NA LISTA</span>
+                
+                <p className="text-gray-300 mb-6">Escaneie o QR code ou clique no botão abaixo</p>
+                
+                <a 
+                  href="https://chat.whatsapp.com/coredefine" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="cta-button w-full flex items-center justify-center"
+                >
+                  <span>ENTRAR NO GRUPO DO WHATSAPP</span>
                   <ArrowRight className="ml-2" size={18} />
-                </button>
-              </form>
-            ) : (
-              <div className="glass-effect p-6 md:p-8 rounded-lg border border-green-500 scroll-animated zoom-in">
-                <p className="text-lg text-green-400 flex items-center justify-center">
-                  <Check className="mr-2" size={24} />
-                  Perfeito! Seu email foi cadastrado com sucesso.
-                </p>
+                </a>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </section>
