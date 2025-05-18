@@ -84,6 +84,7 @@ const TestimonialCarousel = ({ testimonials }: {
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState<boolean[]>(Array(testimonials.length).fill(false));
+  const [imageError, setImageError] = useState<boolean[]>(Array(testimonials.length).fill(false));
 
   const next = () => {
     setCurrentIndex((prevIndex) => 
@@ -107,13 +108,20 @@ const TestimonialCarousel = ({ testimonials }: {
     setIsLoaded(newLoaded);
   };
 
-  // Automatic carousel with pause on hover
+  const handleImageError = (index: number) => {
+    console.error("Erro ao carregar imagem:", testimonials[index].image);
+    const newErrors = [...imageError];
+    newErrors[index] = true;
+    setImageError(newErrors);
+  };
+
+  // Automatic carousel with pause on hover - Reduzido de 5000ms para 3000ms
   useEffect(() => {
     if (isPaused) return;
     
     const interval = setInterval(() => {
       next();
-    }, 5000);
+    }, 3000);
     
     return () => clearInterval(interval);
   }, [isPaused, testimonials.length, currentIndex]);
@@ -131,48 +139,54 @@ const TestimonialCarousel = ({ testimonials }: {
   };
 
   return (
-    <div 
-      className="testimonial-carousel-container"
-      ref={carouselRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <div className="relative pb-20">
       <div 
-        className="testimonial-carousel-track" 
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        className="testimonial-carousel-container"
+        ref={carouselRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        {testimonials.map((testimonial, index) => (
-          <div 
-            key={index} 
-            className="testimonial-carousel-item"
-          >
-            <div className="result-card">
-              <div className="result-image-wrapper">
-                <img 
-                  src={testimonial.image} 
-                  alt={`Transformação de ${testimonial.name}`} 
-                  className="result-image"
-                  onLoad={() => handleImageLoad(index)}
-                  onError={(e) => {
-                    console.error("Erro ao carregar imagem:", testimonial.image);
-                    (e.target as HTMLImageElement).src = "/placeholder.jpg";
-                  }}
-                />
-              </div>
-              <div className="result-caption">
-                <div className="stars-container">
-                  {Array.from({ length: testimonial.stars }).map((_, i) => (
-                    <Star key={i} className="testimonial-star" />
-                  ))}
+        <div 
+          className="testimonial-carousel-track" 
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <div 
+              key={index} 
+              className="testimonial-carousel-item"
+            >
+              <div className="result-card">
+                <div className="result-image-wrapper">
+                  {imageError[index] ? (
+                    <div className="flex items-center justify-center h-full bg-gray-800 text-gray-400">
+                      <span>Imagem não disponível</span>
+                    </div>
+                  ) : (
+                    <img 
+                      src={testimonial.image} 
+                      alt={`Transformação de ${testimonial.name}`} 
+                      className="result-image"
+                      onLoad={() => handleImageLoad(index)}
+                      onError={() => handleImageError(index)}
+                      style={{ objectFit: "contain", width: "100%", height: "100%" }}
+                    />
+                  )}
                 </div>
-                <div className="participant-info">
-                  <span className="participant-name">{testimonial.name}</span>
-                  {testimonial.days && <span className="participant-days">{testimonial.days} dias</span>}
+                <div className="result-caption">
+                  <div className="stars-container">
+                    {Array.from({ length: testimonial.stars }).map((_, i) => (
+                      <Star key={i} className="testimonial-star" />
+                    ))}
+                  </div>
+                  <div className="participant-info">
+                    <span className="participant-name">{testimonial.name}</span>
+                    {testimonial.days && <span className="participant-days">{testimonial.days} dias</span>}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       
       <div className="testimonial-controls">
@@ -295,6 +309,13 @@ export default function Home() {
       image: "/images/result-3.jpg",
       days: "45"
     },
+    {
+      name: "Carla R., 45 anos",
+      stars: 5,
+      image: "/images/result-4.jpg",
+      days: "60"
+    }
+    ,
     {
       name: "Carla R., 45 anos",
       stars: 5,
