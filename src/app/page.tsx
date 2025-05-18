@@ -74,11 +74,11 @@ const SimpleTabs = ({
 // Testimonial Carousel Component
 const TestimonialCarousel = ({ testimonials }: { 
   testimonials: {
-    quote: string;
     name: string;
-    role?: string;
     stars: number;
-    image?: string;
+    imageBefore: string;
+    imageAfter: string;
+    days?: string;
   }[] 
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -134,26 +134,34 @@ const TestimonialCarousel = ({ testimonials }: {
       <div className="testimonial-carousel-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial-carousel-item">
-            <div className="testimonial-card-enhanced">
-              {testimonial.image && (
-                <div className="testimonial-image-container">
+            <div className="before-after-card">
+              <div className="before-after-images">
+                <div className="before-image-container">
+                  <div className="image-label">ANTES</div>
                   <img 
-                    src={testimonial.image} 
-                    alt={`${testimonial.name}`} 
-                    className="testimonial-image" 
+                    src={testimonial.imageBefore} 
+                    alt={`${testimonial.name} antes`} 
+                    className="before-after-image" 
                   />
                 </div>
-              )}
-              <div className="testimonial-content">
-                <div className="testimonial-stars">
+                <div className="after-image-container">
+                  <div className="image-label">DEPOIS</div>
+                  <img 
+                    src={testimonial.imageAfter} 
+                    alt={`${testimonial.name} depois`} 
+                    className="before-after-image" 
+                  />
+                </div>
+              </div>
+              <div className="before-after-caption">
+                <div className="stars-container">
                   {Array.from({ length: testimonial.stars }).map((_, i) => (
                     <Star key={i} className="testimonial-star" />
                   ))}
                 </div>
-                <p className="testimonial-quote">&ldquo;{testimonial.quote}&rdquo;</p>
-                <div className="testimonial-author">
-                  <p className="testimonial-name">{testimonial.name}</p>
-                  {testimonial.role && <p className="testimonial-role">{testimonial.role}</p>}
+                <div className="participant-info">
+                  <span className="participant-name">{testimonial.name}</span>
+                  {testimonial.days && <span className="participant-days">{testimonial.days} dias</span>}
                 </div>
               </div>
             </div>
@@ -165,7 +173,7 @@ const TestimonialCarousel = ({ testimonials }: {
         <button 
           className="carousel-control carousel-prev" 
           onClick={prev}
-          aria-label="Previous testimonial"
+          aria-label="Anterior"
         >
           <ChevronLeft />
         </button>
@@ -175,21 +183,21 @@ const TestimonialCarousel = ({ testimonials }: {
               key={index}
               className={`carousel-indicator ${index === currentIndex ? 'active' : ''}`}
               onClick={() => goToIndex(index)}
-              aria-label={`Go to testimonial ${index + 1}`}
+              aria-label={`Foto ${index + 1}`}
             />
           ))}
         </div>
         <button 
           className="carousel-control carousel-next" 
           onClick={next}
-          aria-label="Next testimonial"
+          aria-label="Próximo"
         >
           <ChevronRight />
         </button>
       </div>
       
       <div className={`carousel-status ${isPaused ? 'paused' : 'playing'}`}>
-        <span className="sr-only">{isPaused ? 'Carousel paused' : 'Carousel playing'}</span>
+        <span className="sr-only">{isPaused ? 'Pausado' : 'Em reprodução'}</span>
       </div>
     </div>
   );
@@ -264,32 +272,32 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: "Você me tirou do caixão. Minha vida mudou completamente depois do desafio. Hoje tenho muito mais disposição e autoconfiança!",
-      name: "Mariana Silva",
-      role: "Professora, 42 anos",
+      name: "Mariana S., 42 anos",
       stars: 5,
-      image: "/images/testimonial-1.jpg"
+      imageBefore: "/images/before-1.jpg",
+      imageAfter: "/images/after-1.jpg",
+      days: "21"
     },
     {
-      quote: "Foi a luz no fim do túnel pra mim. Não tinha mais esperança até encontrar o método. As dores nas costas diminuíram drasticamente na primeira semana!",
-      name: "Julia Ferreira",
-      role: "Advogada, 35 anos",
+      name: "Julia F., 35 anos",
       stars: 5,
-      image: "/images/testimonial-2.jpg"
+      imageBefore: "/images/before-2.jpg",
+      imageAfter: "/images/after-2.jpg",
+      days: "30"
     },
     {
-      quote: "Voltei a sentir orgulho de mim mesma. Estou mais forte, mais confiante e, principalmente, sem dores. O método da Amanda é revolucionário.",
-      name: "Patrícia Mendonça",
-      role: "Empresária, 39 anos",
+      name: "Patrícia M., 39 anos",
       stars: 5,
-      image: "/images/testimonial-3.jpg"
+      imageBefore: "/images/before-3.jpg",
+      imageAfter: "/images/after-3.jpg",
+      days: "45"
     },
     {
-      quote: "Meu marido notou a diferença não só no meu corpo, mas principalmente na minha energia. Até minha postura mudou completamente. Super recomendo!",
-      name: "Carla Rodrigues",
-      role: "Médica, 45 anos",
+      name: "Carla R., 45 anos",
       stars: 5,
-      image: "/images/testimonial-4.jpg"
+      imageBefore: "/images/before-4.jpg",
+      imageAfter: "/images/after-4.jpg",
+      days: "60"
     }
   ];
 
@@ -468,10 +476,10 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">
-              DEPOIMENTOS REAIS
+              RESULTADOS REAIS
             </h2>
             <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-300 px-2 mb-8">
-              Histórias de mulheres que transformaram suas vidas com o Desafio Core Define
+              Transformações reais das mulheres que participaram do Desafio Core Define
             </p>
           </div>
           

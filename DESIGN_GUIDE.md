@@ -59,12 +59,14 @@ Este documento serve como guia de estilo e padrões de UI/UX para manter a consi
 - Ícone de seta gira 180° quando aberto
 - Altura animada ao expandir/colapsar
 
-### Carrossel (Depoimentos)
+### Carrossel (Antes e Depois)
 - Container com classe `testimonial-carousel-container`
 - Track de slides com classe `testimonial-carousel-track`
+- Imagens organizadas com `.before-after-images`
+- Labels "ANTES" e "DEPOIS" posicionados sobre as imagens
+- Efeito de zoom suave nas imagens durante hover
 - Controles de navegação em `.testimonial-controls`
-- Indicador de status (pausa/reprodução)
-- Interação com mouse para pausar/reproduzir
+- Indicador de status (pausa/reprodução) que responde à posição do mouse
 
 ## Animações e Transições
 
