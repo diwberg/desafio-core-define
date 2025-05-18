@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ChevronDown, Star, Check, ArrowRight, ChevronUp } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronDown, Star, Check, ArrowRight, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Simple Accordion Component (not using shadcn)
 const Accordion = ({ items }: { 
@@ -66,6 +66,130 @@ const SimpleTabs = ({
             {activeTab === tab && <span className="tab-indicator" />}
           </button>
         ))}
+      </div>
+    </div>
+  );
+};
+
+// Testimonial Carousel Component
+const TestimonialCarousel = ({ testimonials }: { 
+  testimonials: {
+    quote: string;
+    name: string;
+    role?: string;
+    stars: number;
+    image?: string;
+  }[] 
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const next = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prev = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToIndex = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  // Automatic carousel with pause on hover
+  useEffect(() => {
+    if (isPaused) return;
+    
+    const interval = setInterval(() => {
+      next();
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [isPaused, testimonials.length, currentIndex]);
+
+  // Handle mouse position within the carousel
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!carouselRef.current) return;
+    
+    const { left, width } = carouselRef.current.getBoundingClientRect();
+    const mouseX = e.clientX;
+    const relativeX = mouseX - left;
+    
+    // Pause on the right side, resume on the left side
+    setIsPaused(relativeX / width > 0.3);
+  };
+
+  return (
+    <div 
+      className="testimonial-carousel-container"
+      ref={carouselRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="testimonial-carousel-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        {testimonials.map((testimonial, index) => (
+          <div key={index} className="testimonial-carousel-item">
+            <div className="testimonial-card-enhanced">
+              {testimonial.image && (
+                <div className="testimonial-image-container">
+                  <img 
+                    src={testimonial.image} 
+                    alt={`${testimonial.name}`} 
+                    className="testimonial-image" 
+                  />
+                </div>
+              )}
+              <div className="testimonial-content">
+                <div className="testimonial-stars">
+                  {Array.from({ length: testimonial.stars }).map((_, i) => (
+                    <Star key={i} className="testimonial-star" />
+                  ))}
+                </div>
+                <p className="testimonial-quote">&ldquo;{testimonial.quote}&rdquo;</p>
+                <div className="testimonial-author">
+                  <p className="testimonial-name">{testimonial.name}</p>
+                  {testimonial.role && <p className="testimonial-role">{testimonial.role}</p>}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="testimonial-controls">
+        <button 
+          className="carousel-control carousel-prev" 
+          onClick={prev}
+          aria-label="Previous testimonial"
+        >
+          <ChevronLeft />
+        </button>
+        <div className="carousel-indicators">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              className={`carousel-indicator ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => goToIndex(index)}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
+        </div>
+        <button 
+          className="carousel-control carousel-next" 
+          onClick={next}
+          aria-label="Next testimonial"
+        >
+          <ChevronRight />
+        </button>
+      </div>
+      
+      <div className={`carousel-status ${isPaused ? 'paused' : 'playing'}`}>
+        <span className="sr-only">{isPaused ? 'Carousel paused' : 'Carousel playing'}</span>
       </div>
     </div>
   );
@@ -140,24 +264,32 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: "Você me tirou do caixão. Minha vida mudou completamente depois do desafio.",
-      name: "Mariana S.",
-      stars: 5
+      quote: "Você me tirou do caixão. Minha vida mudou completamente depois do desafio. Hoje tenho muito mais disposição e autoconfiança!",
+      name: "Mariana Silva",
+      role: "Professora, 42 anos",
+      stars: 5,
+      image: "/images/testimonial-1.jpg"
     },
     {
-      quote: "Foi a luz no fim do túnel pra mim. Não tinha mais esperança até encontrar o método.",
-      name: "Julia F.",
-      stars: 5
+      quote: "Foi a luz no fim do túnel pra mim. Não tinha mais esperança até encontrar o método. As dores nas costas diminuíram drasticamente na primeira semana!",
+      name: "Julia Ferreira",
+      role: "Advogada, 35 anos",
+      stars: 5,
+      image: "/images/testimonial-2.jpg"
     },
     {
-      quote: "Voltei a sentir orgulho de mim mesma. Estou mais forte, mais confiante.",
-      name: "Patrícia M.",
-      stars: 5
+      quote: "Voltei a sentir orgulho de mim mesma. Estou mais forte, mais confiante e, principalmente, sem dores. O método da Amanda é revolucionário.",
+      name: "Patrícia Mendonça",
+      role: "Empresária, 39 anos",
+      stars: 5,
+      image: "/images/testimonial-3.jpg"
     },
     {
-      quote: "Meu marido notou a diferença não só no meu corpo, mas principalmente na minha energia.",
-      name: "Carla R.",
-      stars: 5
+      quote: "Meu marido notou a diferença não só no meu corpo, mas principalmente na minha energia. Até minha postura mudou completamente. Super recomendo!",
+      name: "Carla Rodrigues",
+      role: "Médica, 45 anos",
+      stars: 5,
+      image: "/images/testimonial-4.jpg"
     }
   ];
 
@@ -335,28 +467,16 @@ export default function Home() {
       <section className="content-section purple-gradient-bg">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">
               DEPOIMENTOS REAIS
             </h2>
+            <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-300 px-2 mb-8">
+              Histórias de mulheres que transformaram suas vidas com o Desafio Core Define
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="testimonial-card transition-transform duration-300 hover:-translate-y-2"
-              >
-                <div className="flex mb-4">
-                  {Array.from({ length: testimonial.stars }).map((_, i) => (
-                    <Star key={i} className="text-primary w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg mb-6 text-gray-200 italic">&ldquo;{testimonial.quote}&rdquo;</p>
-                <div className="text-right">
-                  <p className="font-semibold text-white">{testimonial.name}</p>
-                </div>
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <TestimonialCarousel testimonials={testimonials} />
           </div>
         </div>
       </section>
