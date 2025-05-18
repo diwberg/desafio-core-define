@@ -344,7 +344,67 @@ export default function Home() {
       stars: 5,
       image: "/images/result-9.jpg",
       days: "50"
-    }
+    },
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-10.jpg",
+      days: "50"
+    },
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-11.jpg",
+      days: "50"
+    },
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-12.jpg",
+      days: "50"
+    }, 
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-13.jpg",
+      days: "50"
+    }, 
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-14.jpg",
+      days: "50"
+    }, 
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-15.jpg",
+      days: "50"
+    }, 
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-16.jpg",
+      days: "50"
+    }, 
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-17.jpg",
+      days: "50"
+    }, 
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-18.jpg",
+      days: "50"
+    }, 
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-19.jpg",
+      days: "50"
+    }, 
   ];
 
   const faqItems = [
