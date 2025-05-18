@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
+import ShareButtons from "@/components/share-buttons";
 
 export default function TermosPage() {
   const [activeSection, setActiveSection] = useState("");
@@ -50,7 +51,7 @@ export default function TermosPage() {
     <div className="min-h-screen bg-black">
       {/* Header with back button */}
       <div className="w-full bg-gradient-to-r from-black to-[#1A0B2E] border-b border-gray-800 sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
-        <div className="container mx-auto px-4 py-4 flex items-center">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link 
             href="/" 
             className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
@@ -58,6 +59,12 @@ export default function TermosPage() {
             <ArrowLeft className="mr-2" size={18} />
             <span>Voltar para a página inicial</span>
           </Link>
+          
+          <ShareButtons 
+            url="https://desafiocoredefine.com.br/termos" 
+            title="Termos de Uso do Desafio Core Define" 
+            description="Confira os termos e condições de uso do programa Desafio Core Define."
+          />
         </div>
       </div>
 
@@ -222,7 +229,7 @@ export default function TermosPage() {
                   </h2>
                   <div className="pl-11">
                     <p className="text-gray-300 mb-4 leading-relaxed">
-                      Se você tiver dúvidas sobre estes Termos de Uso, entre em contato conosco através do e-mail: <a href="mailto:contato@desafiocoredefine.com.br" className="text-primary hover:underline">contato@desafiocoredefine.com.br</a>
+                      Se você tiver dúvidas sobre estes Termos de Uso, entre em contato conosco através do e-mail: <a href="mailto:contato@cuidandodemim.org" className="text-primary hover:underline">contato@cuidandodemim.org</a>
                     </p>
                   </div>
                 </section>

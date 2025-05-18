@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
+import ShareButtons from "@/components/share-buttons";
 
 export default function PrivacidadePage() {
   const [activeSection, setActiveSection] = useState("");
@@ -48,7 +49,7 @@ export default function PrivacidadePage() {
     <div className="min-h-screen bg-black">
       {/* Header with back button */}
       <div className="w-full bg-gradient-to-r from-black to-[#1A0B2E] border-b border-gray-800 sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
-        <div className="container mx-auto px-4 py-4 flex items-center">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link 
             href="/" 
             className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
@@ -56,6 +57,12 @@ export default function PrivacidadePage() {
             <ArrowLeft className="mr-2" size={18} />
             <span>Voltar para a página inicial</span>
           </Link>
+          
+          <ShareButtons 
+            url="https://desafiocoredefine.com.br/privacidade" 
+            title="Política de Privacidade do Desafio Core Define" 
+            description="Saiba como o Desafio Core Define protege seus dados e informações pessoais."
+          />
         </div>
       </div>
 
@@ -224,7 +231,7 @@ export default function PrivacidadePage() {
                   </h2>
                   <div className="pl-11">
                     <p className="text-gray-300 mb-4 leading-relaxed">
-                      Se você tiver dúvidas sobre esta Política de Privacidade ou sobre como tratamos seus dados pessoais, entre em contato conosco através do e-mail: <a href="mailto:privacidade@desafiocoredefine.com.br" className="text-primary hover:underline">privacidade@desafiocoredefine.com.br</a>
+                      Se você tiver dúvidas sobre esta Política de Privacidade ou sobre como tratamos seus dados pessoais, entre em contato conosco através do e-mail: <a href="mailto:privacidade@cuidandodemim.org" className="text-primary hover:underline">privacidade@cuidandodemim.org</a>
                     </p>
                   </div>
                 </section>
