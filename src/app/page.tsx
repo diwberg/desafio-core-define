@@ -537,10 +537,10 @@ export default function Home() {
                 <span className="font-bold"> A prioridade é sua.</span>
               </p>
               
-              <div className="mt-8 md:mt-10">
+              <div className="mt-8 md:mt-10 bg-red-500">
                 <a 
                   href="#waitlist"
-                  className="cta-button inline-block purple-glow text-lg md:text-xl px-8 py-4"
+                  className="cta-button inline-block purple-glow px-8 py-4"
                 >
                   QUERO ENTRAR NA LISTA DE ESPERA
                 </a>
