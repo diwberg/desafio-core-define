@@ -1,24 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Desafio Core Define - Landing Page
 
-## Getting Started
+Landing page para lista de espera do Desafio Core Define, um programa online de movimento consciente, fortalecimento do core e autocuidado para mulheres.
 
-First, run the development server:
+## Tecnologias utilizadas
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn/UI](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+
+## Instalação
+
+Clone o repositório:
+
+```bash
+git clone <url-do-repositorio>
+cd wait_list
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+## Desenvolvimento
+
+Rode o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src/app` - Diretório principal da aplicação Next.js
+- `/src/components` - Componentes reutilizáveis
+- `/public` - Arquivos estáticos
+
+## Personalização
+
+### Cores
+
+As cores principais do projeto estão definidas em `/src/app/globals.css`:
+
+- Verde claro: #A6BFA8
+- Bege suave: #E8D4C7
+- Rosa queimado: #D4A99F
+
+### Fontes
+
+- Títulos: Lora
+- Texto: Montserrat
 
 ## Learn More
 
