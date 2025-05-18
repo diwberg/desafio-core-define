@@ -76,8 +76,7 @@ const TestimonialCarousel = ({ testimonials }: {
   testimonials: {
     name: string;
     stars: number;
-    imageBefore: string;
-    imageAfter: string;
+    image: string;
     days?: string;
   }[] 
 }) => {
@@ -134,26 +133,15 @@ const TestimonialCarousel = ({ testimonials }: {
       <div className="testimonial-carousel-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial-carousel-item">
-            <div className="before-after-card">
-              <div className="before-after-images">
-                <div className="before-image-container">
-                  <div className="image-label">ANTES</div>
-                  <img 
-                    src={testimonial.imageBefore} 
-                    alt={`${testimonial.name} antes`} 
-                    className="before-after-image" 
-                  />
-                </div>
-                <div className="after-image-container">
-                  <div className="image-label">DEPOIS</div>
-                  <img 
-                    src={testimonial.imageAfter} 
-                    alt={`${testimonial.name} depois`} 
-                    className="before-after-image" 
-                  />
-                </div>
+            <div className="result-card">
+              <div className="result-image-wrapper">
+                <img 
+                  src={testimonial.image} 
+                  alt={`Transformação de ${testimonial.name}`} 
+                  className="result-image" 
+                />
               </div>
-              <div className="before-after-caption">
+              <div className="result-caption">
                 <div className="stars-container">
                   {Array.from({ length: testimonial.stars }).map((_, i) => (
                     <Star key={i} className="testimonial-star" />
@@ -274,29 +262,25 @@ export default function Home() {
     {
       name: "Mariana S., 42 anos",
       stars: 5,
-      imageBefore: "/images/before-1.jpg",
-      imageAfter: "/images/after-1.jpg",
+      image: "/images/result-1.jpg",
       days: "21"
     },
     {
       name: "Julia F., 35 anos",
       stars: 5,
-      imageBefore: "/images/before-2.jpg",
-      imageAfter: "/images/after-2.jpg",
+      image: "/images/result-2.jpg",
       days: "30"
     },
     {
       name: "Patrícia M., 39 anos",
       stars: 5,
-      imageBefore: "/images/before-3.jpg",
-      imageAfter: "/images/after-3.jpg",
+      image: "/images/result-3.jpg",
       days: "45"
     },
     {
       name: "Carla R., 45 anos",
       stars: 5,
-      imageBefore: "/images/before-4.jpg",
-      imageAfter: "/images/after-4.jpg",
+      image: "/images/result-4.jpg",
       days: "60"
     }
   ];
@@ -369,41 +353,48 @@ export default function Home() {
       )}
       
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="container relative z-10">
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              DESAFIO CORE DEFINE
-            </h1>
-            
-            <h2 className="text-2xl md:text-4xl font-bold mb-6 text-white">
-              SUA VIRADA COMEÇA AQUI
-            </h2>
-            
-            <p className="text-lg md:text-xl mb-8 text-gray-300">
-              Se você sentiu que esse desafio pode ser sua virada de chave, entra aqui. 
-              <span className="font-bold"> A prioridade é sua.</span>
-            </p>
-            
-            <div className="mt-8">
-              <a 
-                href="#waitlist"
-                className="cta-button inline-block purple-glow text-lg px-8 py-4"
-              >
-                QUERO ENTRAR NA LISTA DE ESPERA
-              </a>
+      <section id="home" className="hero-container">
+        <div className="container mx-auto px-4">
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 gradient-text">
+                DESAFIO CORE DEFINE
+              </h1>
+              
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-white">
+                SUA VIRADA COMEÇA AQUI
+              </h2>
+              
+              <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-10 text-gray-300">
+                Se você sentiu que esse desafio pode ser sua virada de chave, entra aqui. 
+                <span className="font-bold"> A prioridade é sua.</span>
+              </p>
+              
+              <div className="mt-8 md:mt-10">
+                <a 
+                  href="#waitlist"
+                  className="cta-button inline-block purple-glow text-lg md:text-xl px-8 py-4"
+                >
+                  QUERO ENTRAR NA LISTA DE ESPERA
+                </a>
+              </div>
+            </div>
+
+            <div className="hero-image">
+              <img 
+                src="/images/expert-photo.png" 
+                alt="Amanda - Fisioterapeuta e especialista em fortalecimento do core" 
+                className="expert-photo"
+              />
             </div>
           </div>
-        </div>
-        
-        <a 
-          href="#sobre" 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white"
-        >
-          <div className="animate-bounce">
-            <ChevronDown size={30} />
+          
+          <div className="scroll-indicator">
+            <a href="#sobre">
+              <ChevronDown size={30} />
+            </a>
           </div>
-        </a>
+        </div>
       </section>
 
       {/* Sobre o Desafio */}
