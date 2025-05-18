@@ -3,6 +3,48 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Star, Check, ArrowRight, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Hook para animação de scroll
+const useScrollAnimation = () => {
+  useEffect(() => {
+    const animatedElements = document.querySelectorAll('.scroll-animated');
+    const animatedSequences = document.querySelectorAll('.scroll-animated-sequence');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Adicionar classe para animar quando elemento estiver visível
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, {
+      root: null, // viewport
+      threshold: 0.1, // 10% do elemento visível
+      rootMargin: '0px 0px -50px 0px' // margem negativa para disparar um pouco antes
+    });
+    
+    // Observar todos os elementos com animação
+    animatedElements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Observar sequências animadas
+    animatedSequences.forEach(el => {
+      observer.observe(el);
+    });
+    
+    return () => {
+      // Limpar quando componente for desmontado
+      animatedElements.forEach(el => {
+        observer.unobserve(el);
+      });
+      
+      animatedSequences.forEach(el => {
+        observer.unobserve(el);
+      });
+    };
+  }, []);
+};
+
 // Simple Accordion Component (not using shadcn)
 const Accordion = ({ items }: { 
   items: { id: string; question: string; answer: string }[] 
@@ -230,6 +272,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("treinos");
   const [showScrollTop, setShowScrollTop] = useState(false);
   
+  // Ativar animações de scroll
+  useScrollAnimation();
+  
   // Handlers
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -346,64 +391,64 @@ export default function Home() {
       days: "50"
     },
     {
-      name: "Daniela V., 40 anos",
+      name: "Bianca L., 37 anos",
       stars: 5,
       image: "/images/result-10.jpg",
-      days: "50"
+      days: "25"
     },
     {
-      name: "Daniela V., 40 anos",
+      name: "Amanda C., 43 anos",
       stars: 5,
       image: "/images/result-11.jpg",
-      days: "50"
+      days: "32"
     },
     {
-      name: "Daniela V., 40 anos",
+      name: "Gabriela M., 29 anos",
       stars: 5,
       image: "/images/result-12.jpg",
-      days: "50"
+      days: "40"
     }, 
     {
-      name: "Daniela V., 40 anos",
+      name: "Sofia T., 34 anos",
       stars: 5,
       image: "/images/result-13.jpg",
-      days: "50"
+      days: "21"
     }, 
     {
-      name: "Daniela V., 40 anos",
+      name: "Carolina A., 39 anos",
       stars: 5,
       image: "/images/result-14.jpg",
-      days: "50"
+      days: "45"
     }, 
     {
-      name: "Daniela V., 40 anos",
+      name: "Marina S., 41 anos",
       stars: 5,
       image: "/images/result-15.jpg",
-      days: "50"
+      days: "60"
     }, 
     {
-      name: "Daniela V., 40 anos",
+      name: "Luciana B., 36 anos",
       stars: 5,
       image: "/images/result-16.jpg",
-      days: "50"
+      days: "30"
     }, 
     {
-      name: "Daniela V., 40 anos",
+      name: "Juliana R., 40 anos",
       stars: 5,
       image: "/images/result-17.jpg",
-      days: "50"
+      days: "28"
     }, 
     {
-      name: "Daniela V., 40 anos",
+      name: "Aline V., 32 anos",
       stars: 5,
       image: "/images/result-18.jpg",
-      days: "50"
+      days: "35"
     }, 
     {
-      name: "Daniela V., 40 anos",
+      name: "Marcela F., 44 anos",
       stars: 5,
       image: "/images/result-19.jpg",
-      days: "50"
+      days: "42"
     }, 
   ];
 
@@ -522,7 +567,7 @@ export default function Home() {
       {/* Sobre o Desafio */}
       <section id="sobre" className="content-section purple-gradient-bg">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 scroll-animated fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               O QUE É O DESAFIO CORE DEFINE
             </h2>
@@ -532,7 +577,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto scroll-animated-sequence">
             {benefits.map((benefit, index) => (
               <div 
                 key={index}
@@ -552,7 +597,7 @@ export default function Home() {
       {/* O Que Você Vai Receber */}
       <section className="content-section bg-black">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 scroll-animated fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               O QUE VOCÊ VAI RECEBER
             </h2>
@@ -565,8 +610,8 @@ export default function Home() {
               setActiveTab={setActiveTab}
             />
             
-            <div className="feature-content glass-effect rounded-lg p-6 md:p-8 mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="feature-content glass-effect rounded-lg p-6 md:p-8 mt-6 scroll-animated fade-up">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-animated-sequence">
                 {features[activeTab as keyof typeof features].map((item, index) => (
                   <div
                     key={index}
@@ -587,7 +632,7 @@ export default function Home() {
       {/* Depoimentos */}
       <section className="content-section purple-gradient-bg">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 scroll-animated fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">
               RESULTADOS REAIS
             </h2>
@@ -596,7 +641,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto scroll-animated zoom-in">
             <TestimonialCarousel testimonials={testimonials} />
           </div>
         </div>
@@ -605,7 +650,7 @@ export default function Home() {
       {/* FAQ Section */}
       <section className="content-section bg-black">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 scroll-animated fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               PERGUNTAS FREQUENTES
             </h2>
@@ -614,7 +659,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto scroll-animated fade-up">
             <Accordion items={faqItems} />
           </div>
         </div>
@@ -622,7 +667,7 @@ export default function Home() {
       
       {/* Quando Começa */}
       <section className="content-section purple-gradient-bg">
-        <div className="container text-center">
+        <div className="container text-center scroll-animated fade-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
             QUANDO ABRE A PRÓXIMA TURMA?
           </h2>
@@ -635,7 +680,7 @@ export default function Home() {
       {/* Waitlist Form */}
       <section id="waitlist" className="content-section bg-black">
         <div className="container">
-          <div className="max-w-xl mx-auto text-center">
+          <div className="max-w-xl mx-auto text-center scroll-animated fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               VOCÊ MERECE VOLTAR A SE OLHAR COM ORGULHO
             </h2>
@@ -646,7 +691,7 @@ export default function Home() {
             {!submitted ? (
               <form
                 onSubmit={handleSubmit}
-                className="glass-effect p-6 md:p-8 rounded-lg"
+                className="glass-effect p-6 md:p-8 rounded-lg scroll-animated fade-up"
               >
                 <div className="mb-6">
                   <input
@@ -664,7 +709,7 @@ export default function Home() {
                 </button>
               </form>
             ) : (
-              <div className="glass-effect p-6 md:p-8 rounded-lg border border-green-500">
+              <div className="glass-effect p-6 md:p-8 rounded-lg border border-green-500 scroll-animated zoom-in">
                 <p className="text-lg text-green-400 flex items-center justify-center">
                   <Check className="mr-2" size={24} />
                   Perfeito! Seu email foi cadastrado com sucesso.

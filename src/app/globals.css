@@ -1108,3 +1108,116 @@ h1, h2, h3, h4, h5, h6 {
     bottom: -3.5rem;
   }
 }
+
+/* Animações de Scroll */
+.scroll-animated {
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.scroll-animated.fade-in {
+  opacity: 1;
+}
+
+.scroll-animated.fade-up {
+  transform: translateY(40px);
+}
+
+.scroll-animated.fade-up.fade-in {
+  transform: translateY(0);
+}
+
+.scroll-animated.fade-right {
+  transform: translateX(-40px);
+}
+
+.scroll-animated.fade-right.fade-in {
+  transform: translateX(0);
+}
+
+.scroll-animated.fade-left {
+  transform: translateX(40px);
+}
+
+.scroll-animated.fade-left.fade-in {
+  transform: translateX(0);
+}
+
+.scroll-animated.zoom-in {
+  transform: scale(0.95);
+}
+
+.scroll-animated.zoom-in.fade-in {
+  transform: scale(1);
+}
+
+/* Diferentes velocidades de animação */
+.scroll-animated.delay-100 {
+  transition-delay: 100ms;
+}
+
+.scroll-animated.delay-200 {
+  transition-delay: 200ms;
+}
+
+.scroll-animated.delay-300 {
+  transition-delay: 300ms;
+}
+
+.scroll-animated.delay-400 {
+  transition-delay: 400ms;
+}
+
+.scroll-animated.delay-500 {
+  transition-delay: 500ms;
+}
+
+.scroll-animated.speed-fast {
+  transition-duration: 0.5s;
+}
+
+.scroll-animated.speed-slow {
+  transition-duration: 1.2s;
+}
+
+/* Animação sequencial para itens em uma lista */
+.scroll-animated-sequence > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.scroll-animated-sequence.fade-in > *:nth-child(1) {
+  transition-delay: 100ms;
+}
+
+.scroll-animated-sequence.fade-in > *:nth-child(2) {
+  transition-delay: 200ms;
+}
+
+.scroll-animated-sequence.fade-in > *:nth-child(3) {
+  transition-delay: 300ms;
+}
+
+.scroll-animated-sequence.fade-in > *:nth-child(4) {
+  transition-delay: 400ms;
+}
+
+.scroll-animated-sequence.fade-in > *:nth-child(5) {
+  transition-delay: 500ms;
+}
+
+.scroll-animated-sequence.fade-in > *:nth-child(6) {
+  transition-delay: 600ms;
+}
+
+.scroll-animated-sequence.fade-in > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Se hover, acelerar todas as animações */
+.scroll-animated-sequence:hover > * {
+  transition-delay: 0ms !important;
+  transition-duration: 0.3s !important;
+}
