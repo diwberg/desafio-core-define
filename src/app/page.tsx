@@ -55,21 +55,20 @@ const SimpleTabs = ({
   setActiveTab: (tab: string) => void;
 }) => {
   return (
-    <div className="flex flex-wrap gap-2 justify-center bg-muted/30 p-2 rounded-lg">
-      {tabs.map((tab) => (
-        <button
-          key={tab}
-          onClick={() => setActiveTab(tab)}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors capitalize
-            ${activeTab === tab 
-              ? 'bg-primary text-white' 
-              : 'text-gray-400 hover:text-white hover:bg-muted'
-            }`}
-          type="button"
-        >
-          {tab}
-        </button>
-      ))}
+    <div className="tab-container">
+      <div className="tabs-wrapper">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`tab-button ${activeTab === tab ? 'active' : ''}`}
+            type="button"
+          >
+            <span className="tab-text">{tab}</span>
+            {activeTab === tab && <span className="tab-indicator" />}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
@@ -315,17 +314,17 @@ export default function Home() {
               setActiveTab={setActiveTab}
             />
             
-            <div className="glass-effect rounded-lg p-6 md:p-8 mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="feature-content glass-effect rounded-lg p-6 md:p-8 mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {features[activeTab as keyof typeof features].map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center"
+                    className="feature-item"
                   >
-                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="feature-icon">
                       <Check size={14} className="text-white" />
                     </div>
-                    <p className="text-sm md:text-base text-gray-200">{item}</p>
+                    <p className="feature-text">{item}</p>
                   </div>
                 ))}
               </div>
