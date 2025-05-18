@@ -33,13 +33,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Desafio Core Define – Fortaleça seu Corpo e Mente",
-    description: "Método exclusivo para mulheres que transformou centenas de vidas. Entre na lista de espera!",
-    images: ["/images/twitter-image-new.jpg"],
-    creator: "@coredefine",
-  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
