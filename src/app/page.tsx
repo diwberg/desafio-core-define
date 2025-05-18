@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Star, Check, ArrowRight, ChevronUp, ChevronLeft, ChevronRight, Instagram, Facebook, MessageSquare } from "lucide-react";
+import { ChevronDown, Star, Check, ArrowRight, ChevronUp, ChevronLeft, ChevronRight, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
 
 // Hook para animação de scroll
@@ -762,51 +762,91 @@ export default function Home() {
       </section>
       
       {/* Footer */}
-      <footer className="py-12 md:py-16 bg-black border-t border-gray-800">
+      <footer className="pt-12 pb-8 bg-black border-t border-gray-800">
         <div className="container">
-          <div className="flex flex-col items-center">
-            <div className="flex justify-center space-x-6 md:space-x-10 mb-8">
-              <a 
-                href="https://instagram.com/coredefine" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-800"
-                aria-label="Instagram"
-              >
-                <Instagram size={28} />
-              </a>
-              <a 
-                href="https://facebook.com/coredefine" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-800"
-                aria-label="Facebook"
-              >
-                <Facebook size={28} />
-              </a>
-              <a 
-                href="https://chat.whatsapp.com/coredefine" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-800"
-                aria-label="WhatsApp"
-              >
-                <MessageSquare size={28} />
-              </a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div className="flex flex-col items-center md:items-start">
+              <h3 className="text-xl font-semibold text-white mb-4">Desafio Core Define</h3>
+              <p className="text-gray-400 text-sm text-center md:text-left mb-4">
+                Programa de fortalecimento do core para mulheres de todas as idades, criado por Amanda.
+              </p>
+              <p className="text-gray-500 text-xs">
+                © {new Date().getFullYear()} Todos os direitos reservados.
+              </p>
             </div>
             
-            <p className="text-gray-500 mb-6">
-              © {new Date().getFullYear()} Desafio Core Define. Todos os direitos reservados.
+            <div className="flex flex-col items-center">
+              <h3 className="text-xl font-semibold text-white mb-4">Links Rápidos</h3>
+              <div className="flex flex-col space-y-2">
+                <Link href="/termos" className="text-gray-400 hover:text-primary transition-colors">
+                  Termos de Uso
+                </Link>
+                <Link href="/privacidade" className="text-gray-400 hover:text-primary transition-colors">
+                  Política de Privacidade
+                </Link>
+                <a href="#sobre" className="text-gray-400 hover:text-primary transition-colors">
+                  Sobre o Programa
+                </a>
+                <a href="#waitlist" className="text-gray-400 hover:text-primary transition-colors">
+                  Inscreva-se
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex flex-col items-center md:items-end">
+              <h3 className="text-xl font-semibold text-white mb-4">Contato</h3>
+              <div className="flex gap-5 mb-4">
+                <a 
+                  href="https://instagram.com/coredefine" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="footer-social-link"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={24} />
+                </a>
+                <a 
+                  href="https://facebook.com/coredefine" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="footer-social-link"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={24} />
+                </a>
+                <a 
+                  href="https://chat.whatsapp.com/coredefine" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="footer-social-link"
+                  aria-label="WhatsApp"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-whatsapp"
+                  >
+                    <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.2.3-.767.966-.94 1.164-.173.199-.347.223-.646.075-.3-.15-1.267-.465-2.411-1.485-.893-.795-1.494-1.776-1.67-2.075-.173-.3-.018-.46.13-.61.134-.133.3-.345.45-.52.149-.174.2-.3.3-.498.099-.2.05-.374-.025-.524-.075-.15-.672-1.62-.922-2.219-.242-.579-.487-.5-.672-.51-.172-.008-.371-.01-.571-.01-.2 0-.523.074-.797.359-.273.285-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.571-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884" />
+                  </svg>
+                </a>
+              </div>
+              <p className="text-gray-400 text-sm text-center md:text-right">
+                Email: contato@coredefine.com.br
+              </p>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 pt-6 mt-4">
+            <p className="text-gray-500 text-xs text-center">
+              Desenvolvido com ❤️ para mulheres que buscam qualidade de vida e autoestima.
             </p>
-            
-            <div className="flex justify-center space-x-8 text-sm">
-              <Link href="/termos" className="text-gray-400 hover:text-primary transition-colors">
-                Termos de Uso
-              </Link>
-              <Link href="/privacidade" className="text-gray-400 hover:text-primary transition-colors">
-                Política de Privacidade
-              </Link>
-            </div>
           </div>
         </div>
       </footer>
