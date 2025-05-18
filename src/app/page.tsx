@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Star, Check, ArrowRight, ChevronUp, ChevronLeft, ChevronRight, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Hook para animação de scroll
 const useScrollAnimation = () => {
@@ -236,12 +237,14 @@ const TestimonialCarousel = ({ testimonials }: {
                       <span>Imagem não disponível</span>
                     </div>
                   ) : (
-                    <img 
+                    <Image 
                       src={testimonial.image} 
                       alt={`Transformação de ${testimonial.name}`} 
                       className="result-image"
                       onLoad={() => handleImageLoad(index)}
                       onError={() => handleImageError(index)}
+                      width={300}
+                      height={300}
                       style={{ objectFit: "contain", width: "100%", height: "100%" }}
                     />
                   )}
@@ -568,34 +571,38 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="hero-content">
             <div className="hero-text">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 gradient-text">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 gradient-text">
                 DESAFIO CORE DEFINE
               </h1>
               
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
                 SUA VIRADA COMEÇA AQUI
               </h2>
               
-              <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-10 text-gray-300">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-2xl mb-4 md:mb-6 text-gray-300">
                 Se você sentiu que esse desafio pode ser sua virada de chave, entra aqui. 
                 <span className="font-bold"> A prioridade é sua.</span>
               </p>
               
-              <div className="mt-8 md:mt-10">
+              <div className="mt-4 md:mt-6 w-full sm:w-auto">
                 <a 
                   href="#waitlist"
-                  className="cta-button inline-block purple-glow px-8 py-4"
+                  className="cta-button w-full sm:w-auto inline-flex items-center justify-center purple-glow px-3 sm:px-6 py-2 sm:py-3 text-sm sm:text-base md:text-lg pulse-button"
                 >
-                  QUERO ENTRAR NA LISTA DE ESPERA
+                  <span className="whitespace-nowrap">QUERO ENTRAR NA LISTA</span>
+                  <ArrowRight className="ml-2 flex-shrink-0" size={16} />
                 </a>
               </div>
             </div>
 
             <div className="hero-image">
-              <img 
+              <Image 
                 src="/images/expert-photo.png" 
                 alt="Amanda - Fisioterapeuta e especialista em fortalecimento do core" 
+                width={550}
+                height={550}
                 className="expert-photo"
+                priority
               />
             </div>
           </div>
@@ -735,10 +742,12 @@ export default function Home() {
             <div className="glass-effect p-6 md:p-8 rounded-lg scroll-animated fade-up">
               <div className="flex flex-col items-center">
                 <div className="qr-code-container mb-6 bg-white p-4 rounded-lg">
-                  <img 
+                  <Image 
                     src="/images/grupo-qrcode.png" 
-                    alt="QR Code para entrar no grupo" 
-                    className="w-48 h-48 mx-auto"
+                    alt="QR Code para entrar no grupo"
+                    width={192}
+                    height={192}
+                    className="mx-auto"
                   />
                 </div>
                 
@@ -746,13 +755,13 @@ export default function Home() {
                 
                 <div className="flex justify-center w-full">
                   <a 
-                    href="https://chat.whatsapp.com/coredefine" 
+                    href="https://chat.whatsapp.com/CCIuwp9s1KfCFGH153KIYJ" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="pulse-button cta-button max-w-md mx-auto flex items-center justify-center text-lg font-bold"
+                    className="pulse-button cta-button max-w-md w-full sm:w-auto mx-auto flex items-center justify-center text-sm sm:text-base font-bold px-3 py-3"
                   >
-                    <span>ENTRAR NO GRUPO DO WHATSAPP</span>
-                    <ArrowRight className="ml-2" size={20} />
+                    <span className="whitespace-nowrap">ENTRAR NO GRUPO</span>
+                    <ArrowRight className="ml-2 flex-shrink-0" size={18} />
                   </a>
                 </div>
               </div>
@@ -762,12 +771,12 @@ export default function Home() {
       </section>
       
       {/* Footer */}
-      <footer className="pt-12 pb-8 bg-black border-t border-gray-800">
+      <footer className="footer pt-12 pb-8 bg-black border-t border-gray-800">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div className="flex flex-col items-center md:items-start">
+            <div className="md:text-left md:items-start">
               <h3 className="text-xl font-semibold text-white mb-4">Desafio Core Define</h3>
-              <p className="text-gray-400 text-sm text-center md:text-left mb-4">
+              <p className="text-gray-400 text-sm md:text-left mb-4">
                 Programa de fortalecimento do core para mulheres de todas as idades, criado por Amanda.
               </p>
               <p className="text-gray-500 text-xs">
@@ -775,7 +784,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="flex flex-col items-center">
+            <div className="text-center">
               <h3 className="text-xl font-semibold text-white mb-4">Links Rápidos</h3>
               <div className="flex flex-col space-y-2">
                 <Link href="/termos" className="text-gray-400 hover:text-primary transition-colors">
@@ -793,9 +802,9 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="flex flex-col items-center md:items-end">
+            <div className="md:text-right md:items-end">
               <h3 className="text-xl font-semibold text-white mb-4">Contato</h3>
-              <div className="flex gap-5 mb-4">
+              <div className="flex gap-5 mb-4 justify-center md:justify-end">
                 <a 
                   href="https://instagram.com/coredefine" 
                   target="_blank" 
@@ -837,9 +846,7 @@ export default function Home() {
                   </svg>
                 </a>
               </div>
-              <p className="text-gray-400 text-sm text-center md:text-right">
-                Email: contato@coredefine.com.br
-              </p>
+
             </div>
           </div>
           
