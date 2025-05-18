@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Equipe Core Define" }],
   creator: "Equipe Core Define",
   publisher: "Core Define",
-  metadataBase: new URL("https://cuidandodemim.org"),
+  metadataBase: new URL("https://lista.cuidandodemim.org"),
   alternates: {
     canonical: "/",
   },
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://cuidandodemim.org",
-    title: "Desafio Core Define – Transforme seu corpo e bem-estar",
-    description: "Fortaleça seu core, autoestima e bem-estar com um método que já transformou centenas de mulheres. Entre na lista e seja a próxima.",
+    url: "https://lista.cuidandodemim.org",
+    title: "Desafio Core Define – Fortaleça seu Corpo e Mente",
+    description: "Método exclusivo para mulheres que transformou centenas de vidas. Entre na lista de espera e seja a próxima!",
     siteName: "Desafio Core Define",
     images: [
       {
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Desafio Core Define – Transforme seu corpo e bem-estar",
-    description: "Fortaleça seu core, autoestima e bem-estar com um método exclusivo para mulheres.",
+    title: "Desafio Core Define – Fortaleça seu Corpo e Mente",
+    description: "Método exclusivo para mulheres que transformou centenas de vidas. Entre na lista de espera!",
     images: ["/images/twitter-image.jpg"],
     creator: "@coredefine",
   },
@@ -57,6 +57,15 @@ export const metadata: Metadata = {
     maximumScale: 1,
   },
   themeColor: "#8A2BE2",
+  other: {
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Desafio Core Define - Transforme seu corpo e bem-estar",
+    "og:image:type": "image/jpeg",
+    "theme-color": "#8A2BE2",
+    "msapplication-TileColor": "#8A2BE2",
+    "msapplication-TileImage": "/favicon.ico"
+  }
 };
 
 export default function RootLayout({
@@ -70,6 +79,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <meta property="og:image" content="https://lista.cuidandodemim.org/images/og-image.jpg" />
+        <meta property="og:image:secure_url" content="https://lista.cuidandodemim.org/images/og-image.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Desafio Core Define - Transforme seu corpo e bem-estar" />
         <Script
           id="schema-org"
           type="application/ld+json"
@@ -78,10 +93,10 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Desafio Core Define",
-              "url": "https://cuidandodemim.org",
+              "url": "https://lista.cuidandodemim.org",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://cuidandodemim.org/search?q={search_term_string}",
+                "target": "https://lista.cuidandodemim.org/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               },
               "sameAs": [

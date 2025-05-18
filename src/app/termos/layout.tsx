@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Termos de Uso | Desafio Core Define",
     description: "Termos e condições de uso do programa Desafio Core Define. Leia atentamente antes de participar do programa.",
-    url: "https://cuidandodemim.org/termos",
+    url: "https://lista.cuidandodemim.org/termos",
     type: "article",
     publishedTime: new Date().toISOString(),
     modifiedTime: new Date().toISOString(),
@@ -43,7 +43,7 @@ export default function TermosLayout({
               "name": "Desafio Core Define",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://cuidandodemim.org/logo.png"
+                "url": "https://lista.cuidandodemim.org/logo.png"
               }
             },
             "datePublished": new Date().toISOString(),
@@ -55,13 +55,13 @@ export default function TermosLayout({
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Início",
-                  "item": "https://cuidandodemim.org"
+                  "item": "https://lista.cuidandodemim.org"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Termos de Uso",
-                  "item": "https://cuidandodemim.org/termos"
+                  "item": "https://lista.cuidandodemim.org/termos"
                 }
               ]
             }
