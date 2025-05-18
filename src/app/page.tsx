@@ -528,7 +528,7 @@ export default function Home() {
                 <span className="font-bold"> A prioridade é sua.</span>
               </p>
               
-              <div className="mt-8 md:mt-10 bg-red-500">
+              <div className="mt-8 md:mt-10">
                 <a 
                   href="#waitlist"
                   className="cta-button inline-block purple-glow px-8 py-4"
@@ -691,15 +691,17 @@ export default function Home() {
                 
                 <p className="text-gray-300 mb-6">Escaneie o QR code ou clique no botão abaixo</p>
                 
-                <a 
-                  href="https://chat.whatsapp.com/coredefine" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="cta-button w-full flex items-center justify-center"
-                >
-                  <span>ENTRAR NO GRUPO DO WHATSAPP</span>
-                  <ArrowRight className="ml-2" size={18} />
-                </a>
+                <div className="flex justify-center w-full">
+                  <a 
+                    href="https://chat.whatsapp.com/coredefine" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="pulse-button cta-button max-w-md mx-auto flex items-center justify-center text-lg font-bold"
+                  >
+                    <span>ENTRAR NO GRUPO DO WHATSAPP</span>
+                    <ArrowRight className="ml-2" size={20} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

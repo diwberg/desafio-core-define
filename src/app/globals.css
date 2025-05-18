@@ -359,19 +359,86 @@ h1, h2, h3, h4, h5, h6 {
   border-color: rgba(138, 43, 226, 0.3);
 }
 
+/* Botão CTA principal melhorado */
 .cta-button {
   background: linear-gradient(90deg, var(--primary), var(--tertiary));
   color: white;
   border: none;
   border-radius: var(--radius);
-  padding: 0.75rem 1.5rem;
   font-weight: 600;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+  padding: 1.5rem 2.5rem;
+  margin: 1rem;
+  font-size: 1.125rem;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+/* Efeito de pulsação para o botão principal */
+@keyframes pulse-button {
+  0% {
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(138, 43, 226, 0);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
+    transform: scale(1);
+  }
+}
+
+.pulse-button {
+  animation: pulse-button 1.5s infinite;
+  background: linear-gradient(45deg, 
+    var(--primary), 
+    var(--tertiary), 
+    var(--accent), 
+    var(--tertiary), 
+    var(--primary)
+  );
+  background-size: 400% 400%;
+  animation: pulse-button 1.5s infinite, gradient-shift 8s ease infinite;
+  padding: 1.5rem 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .form-control {
