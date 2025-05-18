@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Star, Check, ArrowRight, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, Star, Check, ArrowRight, ChevronUp, ChevronLeft, ChevronRight, Instagram, Facebook, MessageSquare } from "lucide-react";
+import Link from "next/link";
 
 // Hook para animação de scroll
 const useScrollAnimation = () => {
@@ -128,6 +129,34 @@ const TestimonialCarousel = ({ testimonials }: {
   const [isLoaded, setIsLoaded] = useState<boolean[]>(Array(testimonials.length).fill(false));
   const [imageError, setImageError] = useState<boolean[]>(Array(testimonials.length).fill(false));
 
+  // Limitando a quantidade de indicadores para evitar quebra de layout
+  const maxIndicators = 4;
+  const showAllIndicators = testimonials.length <= maxIndicators;
+  
+  // Cálculo para mostrar apenas um subconjunto de indicadores se houver muitos
+  const getVisibleIndicators = () => {
+    if (showAllIndicators) return testimonials.map((_, i) => i);
+    
+    // Mostra indicadores ao redor do atual, com preferência para os anteriores
+    const halfVisible = Math.floor(maxIndicators / 2);
+    let startIdx = currentIndex - halfVisible;
+    let endIdx = currentIndex + (maxIndicators - halfVisible - 1);
+    
+    // Ajusta se estiver no início
+    if (startIdx < 0) {
+      endIdx += Math.abs(startIdx);
+      startIdx = 0;
+    }
+    
+    // Ajusta se estiver no final
+    if (endIdx >= testimonials.length) {
+      startIdx = Math.max(0, startIdx - (endIdx - testimonials.length + 1));
+      endIdx = testimonials.length - 1;
+    }
+    
+    return Array.from({length: endIdx - startIdx + 1}, (_, i) => startIdx + i);
+  };
+
   const next = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
@@ -179,6 +208,9 @@ const TestimonialCarousel = ({ testimonials }: {
     // Pause on the right side, resume on the left side
     setIsPaused(relativeX / width > 0.3);
   };
+
+  // Obtém os indicadores visíveis
+  const visibleIndicators = getVisibleIndicators();
 
   return (
     <div className="relative pb-20">
@@ -240,14 +272,32 @@ const TestimonialCarousel = ({ testimonials }: {
           <ChevronLeft />
         </button>
         <div className="carousel-indicators">
-          {testimonials.map((_, index) => (
+          {!showAllIndicators && currentIndex > 0 && (
+            <button 
+              className="carousel-more-indicator" 
+              onClick={() => goToIndex(0)}
+              aria-label="Primeira foto"
+            >
+              ...
+            </button>
+          )}
+          {visibleIndicators.map((idx) => (
             <button
-              key={index}
-              className={`carousel-indicator ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => goToIndex(index)}
-              aria-label={`Foto ${index + 1}`}
+              key={idx}
+              className={`carousel-indicator ${idx === currentIndex ? 'active' : ''}`}
+              onClick={() => goToIndex(idx)}
+              aria-label={`Foto ${idx + 1}`}
             />
           ))}
+          {!showAllIndicators && currentIndex < testimonials.length - 1 && !visibleIndicators.includes(testimonials.length - 1) && (
+            <button 
+              className="carousel-more-indicator" 
+              onClick={() => goToIndex(testimonials.length - 1)}
+              aria-label="Última foto"
+            >
+              ...
+            </button>
+          )}
         </div>
         <button 
           className="carousel-control carousel-next" 
@@ -260,6 +310,9 @@ const TestimonialCarousel = ({ testimonials }: {
       
       <div className={`carousel-status ${isPaused ? 'paused' : 'playing'}`}>
         <span className="sr-only">{isPaused ? 'Pausado' : 'Em reprodução'}</span>
+      </div>
+      <div className="text-center mt-4 text-xs text-gray-400">
+        <span>Foto {currentIndex + 1} de {testimonials.length}</span>
       </div>
     </div>
   );
@@ -709,15 +762,51 @@ export default function Home() {
       </section>
       
       {/* Footer */}
-      <footer className="py-8 md:py-12 bg-black border-t border-gray-800">
-        <div className="container text-center">
-          <p className="text-gray-500 mb-4">
-            © {new Date().getFullYear()} Desafio Core Define. Todos os direitos reservados.
-          </p>
-          <div className="flex justify-center space-x-6 md:space-x-8">
-            <a href="#" className="text-gray-400 hover:text-primary transition-colors">Instagram</a>
-            <a href="#" className="text-gray-400 hover:text-primary transition-colors">Facebook</a>
-            <a href="#" className="text-gray-400 hover:text-primary transition-colors">WhatsApp</a>
+      <footer className="py-12 md:py-16 bg-black border-t border-gray-800">
+        <div className="container">
+          <div className="flex flex-col items-center">
+            <div className="flex justify-center space-x-6 md:space-x-10 mb-8">
+              <a 
+                href="https://instagram.com/coredefine" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-800"
+                aria-label="Instagram"
+              >
+                <Instagram size={28} />
+              </a>
+              <a 
+                href="https://facebook.com/coredefine" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-800"
+                aria-label="Facebook"
+              >
+                <Facebook size={28} />
+              </a>
+              <a 
+                href="https://chat.whatsapp.com/coredefine" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-800"
+                aria-label="WhatsApp"
+              >
+                <MessageSquare size={28} />
+              </a>
+            </div>
+            
+            <p className="text-gray-500 mb-6">
+              © {new Date().getFullYear()} Desafio Core Define. Todos os direitos reservados.
+            </p>
+            
+            <div className="flex justify-center space-x-8 text-sm">
+              <Link href="/termos" className="text-gray-400 hover:text-primary transition-colors">
+                Termos de Uso
+              </Link>
+              <Link href="/privacidade" className="text-gray-400 hover:text-primary transition-colors">
+                Política de Privacidade
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
