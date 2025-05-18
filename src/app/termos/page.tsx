@@ -61,7 +61,7 @@ export default function TermosPage() {
           </Link>
           
           <ShareButtons 
-            url="https://desafiocoredefine.com.br/termos" 
+            url="https://cuidandodemim.org/termos" 
             title="Termos de Uso do Desafio Core Define" 
             description="Confira os termos e condições de uso do programa Desafio Core Define."
           />

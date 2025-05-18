@@ -384,118 +384,118 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: "Mariana S., 42 anos",
+      name: "Erika, 34 anos",
       stars: 5,
       image: "/images/result-1.jpg",
-      days: "21"
+      days: "30"
     },
     {
-      name: "Julia F., 35 anos",
+      name: "Lilian, 28 anos",
       stars: 5,
       image: "/images/result-2.jpg",
       days: "30"
     },
     {
-      name: "Patrícia M., 39 anos",
+      name: "Ilcelia, 36 anos",
       stars: 5,
       image: "/images/result-3.jpg",
-      days: "45"
+      days: "21"
     },
     {
-      name: "Carla R., 45 anos",
+      name: "Laís, 34 anos",
       stars: 5,
       image: "/images/result-4.jpg",
-      days: "60"
+      days: "21"
     },
     {
-      name: "Renata B., 38 anos",
+      name: "Laís, 34 anos",
       stars: 5,
       image: "/images/result-5.jpg",
-      days: "28"
+      days: "21"
     },
     {
-      name: "Laura T., 41 anos",
+      name: "Laís, 34 anos",
       stars: 5,
       image: "/images/result-6.jpg",
-      days: "35"
+      days: "21"
     },
     {
-      name: "Fernanda M., 36 anos",
+      name: "Geovanna, 29 anos",
       stars: 5, 
       image: "/images/result-7.jpg",
-      days: "42"
+      days: "21"
     },
     {
-      name: "Camila P., 33 anos",
+      name: "Geovanna, 29 anos",
       stars: 5,
       image: "/images/result-8.jpeg",
       days: "21"
     },
     {
-      name: "Daniela V., 40 anos",
+      name: "Andreia, 30 anos",
       stars: 5,
       image: "/images/result-9.jpg",
-      days: "50"
+      days: "21"
     },
     {
-      name: "Bianca L., 37 anos",
+      name: "Laís, 34 anos",
       stars: 5,
       image: "/images/result-10.jpg",
-      days: "25"
+      days: "21"
     },
     {
-      name: "Amanda C., 43 anos",
+      name: "Geovanna, 29 anos",
       stars: 5,
       image: "/images/result-11.jpg",
-      days: "32"
+      days: "21"
     },
     {
-      name: "Gabriela M., 29 anos",
+      name: "Pricila, 31 anos",
       stars: 5,
       image: "/images/result-12.jpg",
-      days: "40"
+      days: "21"
     }, 
     {
-      name: "Sofia T., 34 anos",
+      name: "Ilcelia, 36 anos",
       stars: 5,
       image: "/images/result-13.jpg",
       days: "21"
     }, 
     {
-      name: "Carolina A., 39 anos",
+      name: "Geovanna, 29 anos",
       stars: 5,
       image: "/images/result-14.jpg",
-      days: "45"
+      days: "21"
     }, 
     {
-      name: "Marina S., 41 anos",
+      name: "Laís, 34 anos",
       stars: 5,
       image: "/images/result-15.jpg",
-      days: "60"
+      days: "21"
     }, 
     {
-      name: "Luciana B., 36 anos",
+      name: "Laís, 34 anos",
       stars: 5,
       image: "/images/result-16.jpg",
-      days: "30"
+      days: "21"
     }, 
     {
-      name: "Juliana R., 40 anos",
+      name: "Larissa, 30 anos",
       stars: 5,
       image: "/images/result-17.jpg",
-      days: "28"
+      days: "12"
     }, 
     {
-      name: "Aline V., 32 anos",
+      name: "Larissa, 30 anos",
       stars: 5,
       image: "/images/result-18.jpg",
-      days: "35"
+      days: "21"
     }, 
     {
-      name: "Marcela F., 44 anos",
+      name: "Andreia, 30 anos",
       stars: 5,
       image: "/images/result-19.jpg",
-      days: "42"
+      days: "15"
     }, 
   ];
 
@@ -803,10 +803,9 @@ export default function Home() {
             </div>
             
             <div className="md:text-right md:items-end">
-              <h3 className="text-xl font-semibold text-white mb-4">Contato</h3>
               <div className="flex gap-5 mb-4 justify-center md:justify-end">
                 <a 
-                  href="https://instagram.com/coredefine" 
+                  href="https://www.instagram.com/amandha1/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="footer-social-link"
@@ -815,7 +814,7 @@ export default function Home() {
                   <Instagram size={24} />
                 </a>
                 <a 
-                  href="https://facebook.com/coredefine" 
+                  href="https://www.facebook.com/share/r/18WnyXGDAq/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="footer-social-link"
@@ -824,7 +823,7 @@ export default function Home() {
                   <Facebook size={24} />
                 </a>
                 <a 
-                  href="https://chat.whatsapp.com/coredefine" 
+                  href="https://chat.whatsapp.com/CCIuwp9s1KfCFGH153KIYJ" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="footer-social-link"

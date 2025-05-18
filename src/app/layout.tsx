@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Equipe Core Define" }],
   creator: "Equipe Core Define",
   publisher: "Core Define",
-  metadataBase: new URL("https://desafiocoredefine.com.br"),
+  metadataBase: new URL("https://cuidandodemim.org"),
   alternates: {
     canonical: "/",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://desafiocoredefine.com.br",
+    url: "https://cuidandodemim.org",
     title: "Desafio Core Define – Transforme seu corpo e bem-estar",
     description: "Fortaleça seu core, autoestima e bem-estar com um método que já transformou centenas de mulheres. Entre na lista e seja a próxima.",
     siteName: "Desafio Core Define",
@@ -78,16 +78,15 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Desafio Core Define",
-              "url": "https://desafiocoredefine.com.br",
+              "url": "https://cuidandodemim.org",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://desafiocoredefine.com.br/search?q={search_term_string}",
+                "target": "https://cuidandodemim.org/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               },
               "sameAs": [
-                "https://www.instagram.com/coredefine",
-                "https://www.facebook.com/coredefine",
-                "https://www.youtube.com/coredefine"
+                "https://www.instagram.com/amandha1/",
+                "https://www.facebook.com/share/r/18WnyXGDAq/",
               ]
             })
           }}

@@ -59,7 +59,7 @@ export default function PrivacidadePage() {
           </Link>
           
           <ShareButtons 
-            url="https://desafiocoredefine.com.br/privacidade" 
+            url="https://cuidandodemim.org/privacidade" 
             title="Política de Privacidade do Desafio Core Define" 
             description="Saiba como o Desafio Core Define protege seus dados e informações pessoais."
           />

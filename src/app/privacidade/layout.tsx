@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Política de Privacidade | Desafio Core Define",
     description: "Nossa política de privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações pessoais no Desafio Core Define.",
-    url: "https://desafiocoredefine.com.br/privacidade",
+    url: "https://cuidandodemim.org/privacidade",
     type: "article",
     publishedTime: new Date().toISOString(),
     modifiedTime: new Date().toISOString(),
@@ -43,7 +43,7 @@ export default function PrivacidadeLayout({
               "name": "Desafio Core Define",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://desafiocoredefine.com.br/logo.png"
+                "url": "https://cuidandodemim.org/logo.png"
               }
             },
             "datePublished": new Date().toISOString(),
@@ -55,13 +55,13 @@ export default function PrivacidadeLayout({
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Início",
-                  "item": "https://desafiocoredefine.com.br"
+                  "item": "https://cuidandodemim.org"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Política de Privacidade",
-                  "item": "https://desafiocoredefine.com.br/privacidade"
+                  "item": "https://cuidandodemim.org/privacidade"
                 }
               ]
             }
