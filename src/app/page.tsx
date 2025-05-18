@@ -729,7 +729,7 @@ export default function Home() {
       </section>
       
       {/* Waitlist Form */}
-      <section id="waitlist" className="content-section bg-black">
+      <section id="waitlist" className="content-section bg-black my-10">
         <div className="container">
           <div className="max-w-xl mx-auto text-center scroll-animated fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
@@ -773,10 +773,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="footer pt-12 pb-8 bg-black border-t border-gray-800">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-8">
             <div className="md:text-left md:items-start">
-              <h3 className="text-xl font-semibold text-white mb-4">Desafio Core Define</h3>
-              <p className="text-gray-400 text-sm md:text-left mb-4">
+              <h3 className="text-xl font-semibold text-white my-4">Desafio Core Define</h3>
+              <p className="text-gray-400 text-sm md:text-left my-4">
                 Programa de fortalecimento do core para mulheres de todas as idades, criado por Amanda.
               </p>
               <p className="text-gray-500 text-xs">
