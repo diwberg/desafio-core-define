@@ -83,6 +83,7 @@ const TestimonialCarousel = ({ testimonials }: {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState<boolean[]>(Array(testimonials.length).fill(false));
 
   const next = () => {
     setCurrentIndex((prevIndex) => 
@@ -98,6 +99,12 @@ const TestimonialCarousel = ({ testimonials }: {
 
   const goToIndex = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  const handleImageLoad = (index: number) => {
+    const newLoaded = [...isLoaded];
+    newLoaded[index] = true;
+    setIsLoaded(newLoaded);
   };
 
   // Automatic carousel with pause on hover
@@ -132,23 +139,24 @@ const TestimonialCarousel = ({ testimonials }: {
     >
       <div 
         className="testimonial-carousel-track" 
-        style={{ 
-          transform: `translateX(-${currentIndex * 100}%)`,
-          width: `${testimonials.length * 100}%`
-        }}
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {testimonials.map((testimonial, index) => (
           <div 
             key={index} 
             className="testimonial-carousel-item"
-            style={{ width: `${100 / testimonials.length}%` }}
           >
             <div className="result-card">
               <div className="result-image-wrapper">
                 <img 
                   src={testimonial.image} 
                   alt={`Transformação de ${testimonial.name}`} 
-                  className="result-image" 
+                  className="result-image"
+                  onLoad={() => handleImageLoad(index)}
+                  onError={(e) => {
+                    console.error("Erro ao carregar imagem:", testimonial.image);
+                    (e.target as HTMLImageElement).src = "/placeholder.jpg";
+                  }}
                 />
               </div>
               <div className="result-caption">
