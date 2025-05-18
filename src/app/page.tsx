@@ -14,29 +14,27 @@ const Accordion = ({ items }: {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="faq-container">
       {items.map((item) => (
-        <div key={item.id} className="border border-[rgba(138,43,226,0.2)] rounded-lg overflow-hidden">
+        <div 
+          key={item.id} 
+          className={`faq-item ${openId === item.id ? 'faq-active' : ''}`}
+        >
           <button
             onClick={() => toggleAccordion(item.id)}
-            className="w-full py-4 px-6 flex justify-between items-center bg-[rgba(26,20,35,0.7)] text-left"
+            className="faq-trigger"
             aria-expanded={openId === item.id}
           >
-            <span className="font-semibold">{item.question}</span>
-            <ChevronDown
-              className={`transition-transform duration-200 ${
-                openId === item.id ? "rotate-180" : ""
-              } text-primary`}
-              size={20}
-            />
+            <span className="faq-question">{item.question}</span>
+            <div className="faq-icon-wrapper">
+              <ChevronDown className="faq-icon" />
+            </div>
           </button>
           
-          <div 
-            className={`transition-all duration-200 overflow-hidden ${
-              openId === item.id ? "max-h-96 p-6" : "max-h-0"
-            } bg-[rgba(26,20,35,0.5)]`}
-          >
-            <p className="text-gray-300">{item.answer}</p>
+          <div className={`faq-content ${openId === item.id ? 'faq-content-open' : ''}`}>
+            <div className="faq-answer">
+              <p>{item.answer}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -370,6 +368,9 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               PERGUNTAS FREQUENTES
             </h2>
+            <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-300 px-2 mb-8">
+              Tire suas dúvidas sobre o Desafio Core Define
+            </p>
           </div>
           
           <div className="max-w-3xl mx-auto">
