@@ -24,14 +24,6 @@ export const metadata: Metadata = {
     title: "Desafio Core Define – Fortaleça seu Corpo e Mente",
     description: "Método exclusivo para mulheres que transformou centenas de vidas. Entre na lista de espera e seja a próxima!",
     siteName: "Desafio Core Define",
-    images: [
-      {
-        url: "/images/og-image-new.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Desafio Core Define - Transforme seu corpo e bem-estar",
-      },
-    ],
   },
   icons: {
     icon: [
@@ -51,10 +43,6 @@ export const metadata: Metadata = {
   },
   themeColor: "#8A2BE2",
   other: {
-    "og:image:width": "1200",
-    "og:image:height": "630",
-    "og:image:alt": "Desafio Core Define - Transforme seu corpo e bem-estar",
-    "og:image:type": "image/png",
     "theme-color": "#8A2BE2",
     "msapplication-TileColor": "#8A2BE2",
     "msapplication-TileImage": "/favicon.ico"
@@ -72,12 +60,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-        <meta property="og:image" content="https://lista.cuidandodemim.org/images/og-image-new.jpg" />
-        <meta property="og:image:secure_url" content="https://lista.cuidandodemim.org/images/og-image-new.jpg" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Desafio Core Define - Transforme seu corpo e bem-estar" />
         <Script
           id="schema-org"
           type="application/ld+json"
