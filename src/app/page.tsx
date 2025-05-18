@@ -314,13 +314,36 @@ export default function Home() {
       stars: 5,
       image: "/images/result-4.jpg",
       days: "60"
-    }
-    ,
+    },
     {
-      name: "Carla R., 45 anos",
+      name: "Renata B., 38 anos",
       stars: 5,
-      image: "/images/result-4.jpg",
-      days: "60"
+      image: "/images/result-5.jpg",
+      days: "28"
+    },
+    {
+      name: "Laura T., 41 anos",
+      stars: 5,
+      image: "/images/result-6.jpg",
+      days: "35"
+    },
+    {
+      name: "Fernanda M., 36 anos",
+      stars: 5, 
+      image: "/images/result-7.jpg",
+      days: "42"
+    },
+    {
+      name: "Camila P., 33 anos",
+      stars: 5,
+      image: "/images/result-8.jpeg",
+      days: "21"
+    },
+    {
+      name: "Daniela V., 40 anos",
+      stars: 5,
+      image: "/images/result-9.jpg",
+      days: "50"
     }
   ];
 
