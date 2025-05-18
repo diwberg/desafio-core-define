@@ -130,9 +130,19 @@ const TestimonialCarousel = ({ testimonials }: {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="testimonial-carousel-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+      <div 
+        className="testimonial-carousel-track" 
+        style={{ 
+          transform: `translateX(-${currentIndex * 100}%)`,
+          width: `${testimonials.length * 100}%`
+        }}
+      >
         {testimonials.map((testimonial, index) => (
-          <div key={index} className="testimonial-carousel-item">
+          <div 
+            key={index} 
+            className="testimonial-carousel-item"
+            style={{ width: `${100 / testimonials.length}%` }}
+          >
             <div className="result-card">
               <div className="result-image-wrapper">
                 <img 
