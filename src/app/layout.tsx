@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Desafio Core Define",
     images: [
       {
-        url: "/logo.png",
+        url: "/images/og-image-new.jpg",
         width: 1200,
         height: 630,
         alt: "Desafio Core Define - Transforme seu corpo e bem-estar",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Desafio Core Define – Fortaleça seu Corpo e Mente",
     description: "Método exclusivo para mulheres que transformou centenas de vidas. Entre na lista de espera!",
-    images: ["/logo.png"],
+    images: ["/images/twitter-image-new.jpg"],
     creator: "@coredefine",
   },
   icons: {
@@ -79,8 +79,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-        <meta property="og:image" content="https://lista.cuidandodemim.org/logo.png" />
-        <meta property="og:image:secure_url" content="https://lista.cuidandodemim.org/logo.png" />
+        <meta property="og:image" content="https://lista.cuidandodemim.org/images/og-image-new.jpg" />
+        <meta property="og:image:secure_url" content="https://lista.cuidandodemim.org/images/og-image-new.jpg" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
